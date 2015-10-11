@@ -24,11 +24,9 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 # Developer user
 ENV DEV_USER devop
 ENV DEV_USER_PASS devop
-RUN useradd -ms /bin/bash -p $DEV_USER_PASS $DEV_USER
-
-# Change tO dev user so you can do docker `run -t -i image`
-USER $DEV_USER
-WORKDIR /home/$DEV_USER
+RUN useradd -ms /bin/bash -p $DEV_USER_PASS $DEV_USER && usermod -a -G sudo $DEV_USER
 
 EXPOSE 22
+
+# Running ssh daemon so you can do ssh `devop@localhost -p port`
 CMD ["/usr/sbin/sshd", "-D"]
