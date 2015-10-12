@@ -3,8 +3,6 @@ FROM collinestes/docker-node-oracle:0.12
 # Show Linux distribution
 RUN cat /proc/version
 
-
-
 # Show node and npm version
 RUN echo "Node version" && node -v
 RUN echo "NPM version" && npm --version
@@ -21,10 +19,12 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-# Developer user
+# Developer user. You can login via ssh with `ssh dovep@localhost -p{MAPED_PORT_22}`
 ENV DEV_USER devop
 ENV DEV_USER_PASS devop
-RUN useradd -ms /bin/bash -p $DEV_USER_PASS $DEV_USER && usermod -a -G sudo $DEV_USER
+RUN useradd -ms /bin/bash $DEV_USER
+RUN usermod -a -G sudo $DEV_USER
+RUN echo "$DEV_USER:$DEV_USER_PASS" | chpasswd
 
 EXPOSE 22
 
