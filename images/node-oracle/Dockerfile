@@ -25,8 +25,10 @@ ENV DEV_USER_PASS devop
 RUN useradd -ms /bin/bash $DEV_USER
 RUN usermod -a -G sudo $DEV_USER
 RUN echo "$DEV_USER:$DEV_USER_PASS" | chpasswd
+RUN mkdir /home/$DEV_USER/dev
 
 EXPOSE 22
+VOLUME ["/home/$DEV_USER/dev"]
 
 # Running ssh daemon so you can do ssh `devop@localhost -p port`
 CMD ["/usr/sbin/sshd", "-D"]
