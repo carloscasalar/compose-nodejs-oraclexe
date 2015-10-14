@@ -9,6 +9,7 @@ RUN mkdir /u01/scripts
 # Checkout my sql toolbox
 RUN git clone https://github.com/SirRagnar/sqlPlusToolBox.git /u01/scripts
 
-RUN chown oracle:dba /u01/scripts
-
-# Run sqlplus and execute `ALTER USER HR ACCOUNT UNLOCK IDENTIFIED BY password;`
+# Unlock HR account and reset its passwod to HR
+RUN mkdir /u01/scripts/init
+COPY unlockhr.sql /u01/scripts/init/
+RUN echo exit | sqlplus SYSTEM/ORACLE@XE @/u01/scripts/init/unlockhr.sql
