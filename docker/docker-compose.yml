@@ -1,0 +1,8 @@
+node-oracle:
+  build: ./node-oracle
+  ports:
+   - "50000:22"
+  links:
+   - oracle-xe
+oracle-xe:
+  image: sath89/oracle-xe-11g
