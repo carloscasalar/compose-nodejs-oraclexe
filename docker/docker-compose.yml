@@ -5,4 +5,6 @@ node-oracle:
   links:
    - oracle-xe
 oracle-xe:
-  image: sath89/oracle-xe-11g
+  image: carloscastillo/rgt-oracle-xe-11g
+  ports:
+   - "1521:1521"
