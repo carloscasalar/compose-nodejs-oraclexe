@@ -2,9 +2,16 @@ node-oracle:
   build: ./node-oracle
   ports:
    - "50000:22"
+  environment:
+   - DEV_USER=devop
+  volumes:
+   - ../src:/home/devop/dev
   links:
    - oracle-xe
 oracle-xe:
   image: carloscastillo/rgt-oracle-xe-11g
   ports:
    - "1521:1521"
+  environment:
+   - SCHEMAS=DEVOP
+   - BATCH_PARAMS=DEVOP

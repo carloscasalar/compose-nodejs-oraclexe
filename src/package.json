@@ -1,0 +1,32 @@
+{
+  "name": "compose-nodejs-oraclexe",
+  "version": "0.1.0",
+  "description": "An experiment compiling an testing pl/sql code from javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirRagnar/compose-nodejs-oraclexe.git"
+  },
+  "keywords": [
+    "oraclexe",
+    "plsql",
+    "nodejs",
+    "tdd"
+  ],
+  "author": "Carlos Castillo Alarcón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SirRagnar/compose-nodejs-oraclexe/issues"
+  },
+  "homepage": "https://github.com/SirRagnar/compose-nodejs-oraclexe#readme",
+  "devDependencies": {
+    "debug": "^2.2.0",
+    "gulp": "^3.9.0",
+    "jshint": "^2.8.0",
+    "orawrap": "^0.2.4",
+    "plumber": "^0.4.8"
+  }
+}
